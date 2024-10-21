@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 
+import dataclasses
+import os
 import pathlib
 import base64
 import subprocess
 from typing import Optional
 import typer
-import pydantic_settings
 from dotenv import load_dotenv
 import sys
 
@@ -19,12 +20,11 @@ def unpack_key(key: str):
     return base64.b64decode(key)
 
 
-class Settings(pydantic_settings.BaseSettings):
-    model_config = pydantic_settings.SettingsConfigDict(env_prefix='KEY_')
-    
-    workdir: pathlib.Path = pathlib.Path(".keys")
-    priv: str
-    pub: str
+@dataclasses.dataclass
+class Settings:   
+    workdir: pathlib.Path = dataclasses.field(default_factory=lambda: pathlib.Path(os.environ.get("KEY_WORKDIR", ".keys")))
+    priv: str = dataclasses.field(default_factory=lambda: os.environ["KEY_PRIV"])
+    pub: str = dataclasses.field(default_factory=lambda: os.environ["KEY_PUB"])
 
     def run(self, args: list[str], input: bytes | None = None):
         return subprocess.run(args, input=input, check=True, env={"GNUPGHOME": str(self.workdir)}, capture_output=True)

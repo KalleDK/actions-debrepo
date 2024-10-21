@@ -2,7 +2,7 @@ FROM debian:trixie-slim
 
 RUN apt update -q -y
 
-RUN apt install -q -y python3 python3-typer python3-pydantic-settings python3-pydantic python3-dotenv apt-utils gnupg
+RUN apt install -q -y python3 python3-typer python3-dotenv apt-utils gnupg
 
 COPY tools/make-deb/create-markdown.py /usr/local/bin/create-markdown
 RUN chmod +x /usr/local/bin/create-markdown
