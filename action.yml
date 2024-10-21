@@ -1,0 +1,35 @@
+# action.yml
+name: 'Create DEB Repository'
+author: 'Kalle M. Aagaard <alpine@k-moeller.dk>'
+description: 'Build Debian Repository'
+outputs:
+  repo_path:
+    description: "Path with repo"
+inputs:
+  pkgs_path:
+    description: "Path with packages"
+    required: false
+    default: "pkgs"
+  key_name:
+    description: 'Name of RSA Key to sign the package'
+    required: true
+  key_priv:
+    description: 'Private RSA Key to sign the package'
+    required: true
+  key_pub:
+    description: 'Public RSA Key to verify the package'
+    required: true
+  repo_url:
+    description: 'Url for repo'
+    required: true
+  repo_name:
+    description: 'Name of the repo'
+    required: true
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+
+branding:
+  icon: 'package'  
+  color: 'blue'
