@@ -28,9 +28,9 @@ mkdir -p ${BUILD_DIR_REL}/cache
 
 # Create the repo
 pushd ${BUILD_DIR_REL}
-apt-ftparchive generate ../apt-ftparchive.conf
-apt-ftparchive -c ../stable.conf release deb/dists/stable > deb/dists/stable/Release
-apt-ftparchive -c ../testing.conf release deb/dists/testing > deb/dists/testing/Release
+apt-ftparchive generate /etc/repoconf/apt-ftparchive.conf
+apt-ftparchive -c /etc/repoconf/stable.conf release deb/dists/stable > deb/dists/stable/Release
+apt-ftparchive -c /etc/repoconf/testing.conf release deb/dists/testing > deb/dists/testing/Release
 popd
 
 

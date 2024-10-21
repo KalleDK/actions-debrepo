@@ -16,7 +16,8 @@ RUN chmod +x /usr/local/bin/create-gpg
 COPY tools/create-repo.sh /usr/local/bin/create-repo
 RUN chmod +x /usr/local/bin/create-repo
 
-COPY conf/apt-ftparchive.conf conf/stable.conf conf/testing.conf /root/
+RUN mkdir -p /etc/repoconf
+COPY conf/apt-ftparchive.conf conf/stable.conf conf/testing.conf /etc/repoconf/
 
 WORKDIR /root
 
