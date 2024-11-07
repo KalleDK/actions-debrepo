@@ -20,7 +20,7 @@ mkdir -p ${BUILD_DIR_REL}
 
 # Create the repo directory
 mkdir -p ${REPO_DIR_REL}
-mkdir -p ${REPO_DIR_REL}/dists/{stable,testing}/main/{binary-all,binary-i386,binary-amd64,source}
+mkdir -p ${REPO_DIR_REL}/dists/{stable,testing}/main/{binary-all,binary-i386,binary-amd64,binary-arm64,source}
 mkdir -p ${REPO_DIR_REL}/pool/main
 
 cp -r ${REPO_PKGS}/**/*.deb ${REPO_DIR_REL}/pool/main/
