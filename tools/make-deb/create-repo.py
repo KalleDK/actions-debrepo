@@ -13,6 +13,7 @@ class Arch(enum.Enum):
     amd64 = "amd64"
     arm64 = "arm64"
     i386 = "i386"
+    armhf = "armhf"
 
 Dist = NewType("Dist", str)
 Component = NewType("Component", str)
