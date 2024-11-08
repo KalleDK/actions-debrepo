@@ -1,0 +1,16 @@
+# Sample workflow for building and deploying a Jekyll site to GitHub Pages
+name: Demo
+
+on:
+  # Runs on pushes targeting the default branch
+  push:
+    branches: ["main"]
+jobs:
+  demo:
+    name: Demo
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create source folder
+        run: |
+          which apt-ftparchive || true
+          whích gpg || true
