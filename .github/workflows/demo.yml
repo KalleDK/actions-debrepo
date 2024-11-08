@@ -13,4 +13,11 @@ jobs:
       - name: Create source folder
         run: |
           which apt-ftparchive || true
-          whích gpg || true
+          which gpg || true
+      - name: Install
+        run: |
+          apt install apt-utils
+      - name: Create source folder
+        run: |
+          which apt-ftparchive || true
+          which gpg || true
