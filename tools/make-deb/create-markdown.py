@@ -10,12 +10,15 @@ DEB_REPO_NAME = os.environ["DEB_REPO_NAME"]
 
 HEADER = f"""	
 ```bash
-# Install key (use one of)
-curl '{DEB_REPO_URL}/{DEB_PUBLIC_KEY_NAME}.asc' | sudo gpg --dearmor -o /usr/share/keyrings/{DEB_PUBLIC_KEY_NAME}.gpg
+# Install key
 sudo curl -o /usr/share/keyrings/{DEB_PUBLIC_KEY_NAME}.gpg '{DEB_REPO_URL}/{DEB_PUBLIC_KEY_NAME}.gpg'
+# or
+curl '{DEB_REPO_URL}/{DEB_PUBLIC_KEY_NAME}.asc' | sudo gpg --dearmor -o /usr/share/keyrings/{DEB_PUBLIC_KEY_NAME}.gpg
 
 # Install stable repo
-echo \"deb [arch=amd64 signed-by=/usr/share/keyrings/{DEB_PUBLIC_KEY_NAME}.gpg] {DEB_REPO_URL} stable main\" | sudo tee /etc/apt/sources.list.d/{DEB_REPO_NAME}.list" >> $@
+echo -e \"Types: deb\\nURIs: {DEB_REPO_URL}\\nSuites: stable\nComponents: main\nSigned-By: /usr/share/keyrings/{DEB_PUBLIC_KEY_NAME}.gpg" | sudo tee /etc/apt/sources.list.d/{DEB_REPO_NAME}.sources
+# or
+echo \"deb [arch=amd64 signed-by=/usr/share/keyrings/{DEB_PUBLIC_KEY_NAME}.gpg] {DEB_REPO_URL} stable main\" | sudo tee /etc/apt/sources.list.d/{DEB_REPO_NAME}.list
 ```
 # Debian Repository
 
