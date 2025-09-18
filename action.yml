@@ -31,5 +31,5 @@ runs:
   image: 'Dockerfile'
 
 branding:
-  icon: 'package'  
+  icon: 'package'
   color: 'blue'
